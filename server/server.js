@@ -20,9 +20,13 @@ app.post('/guess', (req, res)=>{
   allGuesses.push(playerGuesses);
 
   res.sendStatus(201);
+  console.log(allGuesses);
+});
 
-})
-
+app.get('/guess', (req, res)=> {
+  console.log('server side GET');
+  res.send(allGuesses);
+});
 
 
 app.listen(PORT, () => {
