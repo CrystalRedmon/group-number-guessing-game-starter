@@ -13,14 +13,13 @@ app.use(express.static('server/public'));
 let allGuesses =[];
 let number = Math.floor(Math.random() * 26 +1);
 
+let compStatus = {
+  player1: '',
+  player2: ''
+};
 
 
-    
-    
-    console.log(number);
-
-
-
+console.log(number);
 
 
 app.post('/guess', (req, res)=>{
@@ -29,14 +28,41 @@ app.post('/guess', (req, res)=>{
   let playerGuesses = req.body;
   allGuesses.push(playerGuesses);
 
+
+  ///running comparision player 1
+  if(Number(req.body.player1) < number){
+    compStatus.player1 = 'too low';
+  }else if(Number(req.body.player1) > number){
+    compStatus.player1 = 'too high';
+  }else if (Number(req.body.player1) === number){
+    compStatus.player1 = 'winner';
+  };
+  // running comparison player 2
+  if(Number(req.body.player2) < number){
+    compStatus.player2 = 'too low';
+  }else if(Number(req.body.player2) > number){
+    compStatus.player2 = 'too high';
+  }else if(Number(req.body.player2) === number){
+    compStatus.player2 = 'winner';
+  };
+
   res.sendStatus(201);
   console.log(allGuesses);
+
+  console.log(compStatus);
 });
 
 app.get('/guess', (req, res)=> {
   console.log('server side GET');
   res.send(allGuesses);
 });
+
+
+app.get('/comparison', (req, res)=>{
+  console.log('comparision funct');
+  res.send(compStatus);
+});
+
 
 
 

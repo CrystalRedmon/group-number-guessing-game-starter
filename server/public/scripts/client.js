@@ -5,6 +5,7 @@
 $(document).ready(handleReady);
 
 let clientAllGuesses = [];
+let clientComparison ={};
 
 function handleReady() {
   console.log("jquery is loaded!");
@@ -51,6 +52,15 @@ function getStoredGuess () {
       clientAllGuesses = response;
       console.log(clientAllGuesses);
       render();
+    });
+
+  $.ajax({
+    url: '/comparison',
+    method: 'GET'
+  })
+    .then((response)=> {
+      clientComparison = response;
+      console.log(clientComparison);
     });
 }
 
