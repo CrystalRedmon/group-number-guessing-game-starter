@@ -11,6 +11,16 @@ app.use(express.static('server/public'));
 
 // GET & POST Routes go here
 let allGuesses =[];
+let number = Math.floor(Math.random() * 26 +1);
+
+
+
+    
+    
+    console.log(number);
+
+
+
 
 
 app.post('/guess', (req, res)=>{
@@ -27,6 +37,13 @@ app.get('/guess', (req, res)=> {
   console.log('server side GET');
   res.send(allGuesses);
 });
+
+
+
+
+
+
+
 
 
 app.listen(PORT, () => {

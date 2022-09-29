@@ -55,6 +55,5 @@ function getStoredGuess () {
 }
 
 function render(){
-  console.log('inside render!');
 
 }
