@@ -5,7 +5,7 @@
 $(document).ready(handleReady);
 
 let clientAllGuesses = [];
-let clientComparison ={};
+let clientAllComparison =[];
 
 function handleReady() {
   console.log("jquery is loaded!");
@@ -59,11 +59,24 @@ function getStoredGuess () {
     method: 'GET'
   })
     .then((response)=> {
-      clientComparison = response;
-      console.log(clientComparison);
+      clientAllComparison.push(response);
+      console.log(clientAllComparison);
+      render();
     });
 }
 
+
 function render(){
+    $('#gameTable').empty();
+
+  for (let words of clientAllComparison){
+    $('#gameTable').append(`
+    <tr>
+      <td> ${words.player1} </td>
+      <td> ${words.player2} </td>
+    </tr>
+    `)
+  }
+
 
 }
