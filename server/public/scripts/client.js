@@ -68,6 +68,7 @@ function getStoredGuess () {
 
 function render(){
     $('#gameTable').empty();
+    $('#guessCounter').empty();
 
   for (let words of clientAllComparison){
     $('#gameTable').append(`
@@ -78,5 +79,5 @@ function render(){
     `)
   }
 
-
+    $('#guessCounter').append(`Round: ${clientAllComparison.length + 1 }`);
 }
