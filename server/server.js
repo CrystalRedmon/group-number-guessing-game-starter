@@ -11,7 +11,6 @@ app.use(express.static('server/public'));
 
 // GET & POST Routes go here
 let allGuesses =[];
-let number = Math.floor(Math.random() * 26 +1);
 
 let compStatus = {
   player1: '',

@@ -12,7 +12,7 @@ function handleReady() {
 
   $('#form').on('submit', onSubmitGuess);
 
-
+  $('#resetBtn').on('click', resetGame);
 
 }
 
@@ -38,6 +38,16 @@ function onSubmitGuess(evt){
         console.log('in ajax POST');
         getStoredGuess();
       });
+
+}
+
+function resetGame () {
+
+  clientAllGuesses = [];
+  clientAllComparison =[];
+
+  $('#gameTable').empty();
+  $('#guessCounter').empty();
 
 }
 
@@ -77,7 +87,26 @@ function render(){
       <td> ${words.player2} </td>
     </tr>
     `)
-  }
+
+    if(words.player1 === 'winner' && words.player2 === 'winner'){
+      $('#winner').append(`
+      <h1>It's a Tie!</h1>
+      <button id="resetBtn">Reset!!</button>
+      `);
+    }else if(words.player2 === 'winner'){
+      $('#winner').append(`
+      <h1>Player 2 Wins</h1>
+      <button id="resetBtn">Reset!!</button>
+      `);
+    }else if(words.player1 === 'winner'){
+      $('#winner').append(`
+      <h1>Player 1 Wins</h1>
+      <button id="resetBtn">Reset!!</button>
+      `);
+    };
+
+
+  };
 
     $('#guessCounter').append(`Round: ${clientAllComparison.length + 1 }`);
 }
