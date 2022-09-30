@@ -1,0 +1,39 @@
+#container{
+    width: 50%;
+    margin: 5em auto;
+    text-align: center;
+    background-color: beige;
+    padding-bottom: 4em;
+    border: #235789 solid 1em
+}
+
+form, table{
+    margin-top: 3em;
+}
+
+
+
+h1{
+    padding-top: 2em;
+}
+
+table{
+    width: 50%;
+    margin: 2em auto;
+}
+
+th{
+    color: #235789;
+}
+
+#winner{
+    background-color: #DD6E42;
+    width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    
+}
+
+.resetBtn{
+    margin-bottom: 2em;
+}
