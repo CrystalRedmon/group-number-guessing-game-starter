@@ -4,7 +4,8 @@
     text-align: center;
     background-color: beige;
     padding-bottom: 4em;
-    border: #235789 solid 1em
+    border: #235789 solid 1em;
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 form, table{
