@@ -50,7 +50,8 @@ function resetGame () {
   clientAllComparison =[];
 
   $('#gameTable').empty();
-  $('#guessCounter').empty();
+  $('#guessCounter').empty().append('1') ;
+  
   $('#winner').empty();
 
 
