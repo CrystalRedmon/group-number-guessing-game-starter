@@ -18,6 +18,11 @@ let compStatus = {
 };
 
 
+let number = Math.floor(Math.random() * 25) + 1;
+
+
+
+
 console.log(number);
 
 
@@ -63,7 +68,14 @@ app.get('/comparison', (req, res)=>{
 });
 
 
+app.get('/reset', (req, res)=>{
 
+  number = Math.floor(Math.random() * 25) + 1;
+  allGuesses =[];
+
+  console.log('new', number);
+  res.sendStatus(201);
+});
 
 
 

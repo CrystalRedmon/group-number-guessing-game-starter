@@ -2,6 +2,8 @@
 
 
 
+
+
 $(document).ready(handleReady);
 
 let clientAllGuesses = [];
@@ -12,7 +14,8 @@ function handleReady() {
 
   $('#form').on('submit', onSubmitGuess);
 
-  $('#resetBtn').on('click', resetGame);
+  $('#winner').on('click', '.resetBtn', resetGame);
+
 
 }
 
@@ -42,15 +45,26 @@ function onSubmitGuess(evt){
 }
 
 function resetGame () {
-
+  console.log('reset button pushed');
   clientAllGuesses = [];
   clientAllComparison =[];
 
   $('#gameTable').empty();
   $('#guessCounter').empty();
+  $('#winner').empty();
 
-}
 
+
+  $.ajax({
+    url: '/reset',
+    method: 'GET'
+
+  })
+    .then((response)=>{
+
+    })
+
+  }
 function getStoredGuess () {
 
   $.ajax({
@@ -91,22 +105,22 @@ function render(){
     if(words.player1 === 'winner' && words.player2 === 'winner'){
       $('#winner').append(`
       <h1>It's a Tie!</h1>
-      <button id="resetBtn">Reset!!</button>
+      <button class="resetBtn">Reset!!</button>
       `);
     }else if(words.player2 === 'winner'){
       $('#winner').append(`
       <h1>Player 2 Wins</h1>
-      <button id="resetBtn">Reset!!</button>
+      <button class="resetBtn">Reset!!</button>
       `);
     }else if(words.player1 === 'winner'){
       $('#winner').append(`
       <h1>Player 1 Wins</h1>
-      <button id="resetBtn">Reset!!</button>
+      <button class="resetBtn">Reset!!</button>
       `);
     };
 
 
   };
 
-    $('#guessCounter').append(`Round: ${clientAllComparison.length + 1 }`);
+    $('#guessCounter').append(`${clientAllComparison.length + 1 }`);
 }
